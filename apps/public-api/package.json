@@ -14,7 +14,7 @@
     "@repo/telegram": "0.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
-    "esbuild": "^0.20.2",
+    "esbuild": "^0.25.5",
     "express": "^4.21.2",
     "node-cache": "^5.1.2"
   },

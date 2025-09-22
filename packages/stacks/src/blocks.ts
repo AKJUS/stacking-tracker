@@ -23,10 +23,10 @@ export async function getBlock(blockHeight: number): Promise<any> {
   return block;
 }
 
-// export async function getBlockByBurnHeight(burnBlockHeight: number): Promise<any> {
-//   const block = await blocksApi.getBlockByBurnBlockHeight({ burnBlockHeight: burnBlockHeight });
-//   return block;
-// }
+export async function getBurnBlockByHeight(burnBlockHeight: number): Promise<any> {
+  const block = await blocksApi.getBlockByBurnBlockHeight({ burnBlockHeight: burnBlockHeight });
+  return block;
+}
 
 export async function getBlockByBurnHeight(burnBlockHeight: number): Promise<any> {
   try {

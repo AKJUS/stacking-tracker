@@ -17,13 +17,6 @@ async function cycleEndBlock(cycle: number): Promise<number> {
   return cycleEnd;
 }
 
-async function blockToDate(block: number): Promise<Date> {
-  const url = `https://api.blockchair.com/bitcoin/blocks?q=id(${block})`;
-  const result = await fetch(url).then((res) => res.json());
-  const blockTime = result["data"][0]["time"];
-  return new Date(blockTime);
-}
-
 async function priceAtDate(symbol: string, date: Date): Promise<number> {
   const day = String(date.getDate()).padStart(2, "0");
   const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -43,7 +36,9 @@ async function priceAtDate(symbol: string, date: Date): Promise<number> {
 
 async function savePrices(cycle: number) {
   const endBlock = await cycleEndBlock(cycle);
-  const endDate = await blockToDate(endBlock);
+
+  const endBlockData = await stacks.getBurnBlockByHeight(endBlock);
+  const endDate = new Date(endBlockData.burn_block_time * 1000);
 
   for (const symbol of ["btc", "stx"]) {
     const price = await priceAtDate(symbol, endDate);

@@ -48,7 +48,7 @@ export const poxAddressToPool = {
     name: "Xverse Pool",
     slug: "xverse-pool",
     logo: "/logos/xverse.webp",
-    website: "https://xverse-pool.com",
+    website: "https://portfolio.xverse.app",
     symbol: "BTC",
     fee: 0.05,
     feeDisclosed: true,
@@ -120,7 +120,7 @@ export const delegationAddressToPool = {
     name: "Xverse Pool",
     slug: "xverse-pool",
     logo: "/logos/xverse.webp",
-    website: "https://xverse-pool.com",
+    website: "https://portfolio.xverse.app",
   },
   "SP21YTSM60CAY6D011EZVEVNKXVW8FVZE198XEFFP.pox4-fast-pool-v3": {
     name: "Fast Pool",
@@ -214,19 +214,19 @@ export const signerKeyToPool = {
     name: "Xverse #2",
     slug: "xverse-2",
     logo: "/logos/xverse.webp",
-    website: "https://xverse-pool.com",
+    website: "https://portfolio.xverse.app",
   },
   "0x02877ce29ba35458b827a6ea18510b9058ae4c30e2c33d288f2982c13497caec6e": {
     name: "Xverse #1",
     slug: "xverse-1",
     logo: "/logos/xverse.webp",
-    website: "https://xverse-pool.com",
+    website: "https://portfolio.xverse.app",
   },
   "0x03b3b78738abbdc573cdcefd8200b1bca999e2f2fd8ecdf70c64ced1e4105437b7": {
     name: "Xverse #3",
     slug: "xverse-3",
     logo: "/logos/xverse.webp",
-    website: "https://xverse-pool.com",
+    website: "https://portfolio.xverse.app",
   },
 
   "0x023d6ecdc36fa1e1c6a9f116c7f13ae843001ed9d617f66f6c68cabf751bf82555": {

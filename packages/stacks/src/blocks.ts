@@ -24,8 +24,12 @@ export async function getBlock(blockHeight: number): Promise<any> {
 }
 
 export async function getBurnBlockByHeight(burnBlockHeight: number): Promise<any> {
-  const block = await blocksApi.getBlockByBurnBlockHeight({ burnBlockHeight: burnBlockHeight });
-  return block;
+  try {
+    const block = await blocksApi.getBlockByBurnBlockHeight({ burnBlockHeight: burnBlockHeight });
+    return block;
+  } catch (error) {
+    return await getBurnBlockByHeight(burnBlockHeight + 1);
+  }
 }
 
 export async function getBlockByBurnHeight(burnBlockHeight: number): Promise<any> {

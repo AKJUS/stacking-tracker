@@ -37,7 +37,7 @@ async function priceAtDate(symbol: string, date: Date): Promise<number> {
 async function savePrices(cycle: number) {
   const endBlock = await cycleEndBlock(cycle);
 
-  const endBlockData = await stacks.getBurnBlockByHeight(endBlock);
+  const endBlockData = await stacks.getBurnBlockByHeight(endBlock - 110); // To account for 100 reward blocks
   const endDate = new Date(endBlockData.burn_block_time * 1000);
 
   for (const symbol of ["btc", "stx"]) {
@@ -49,7 +49,7 @@ async function savePrices(cycle: number) {
 
 async function saveSupply(cycle: number) {
   const endBlock = await cycleEndBlock(cycle);
-  const stacksBlock = await stacks.getBlockByBurnHeight(endBlock - 2100);
+  const stacksBlock = await stacks.getBlockByBurnHeight(endBlock - 2100 - 110);
   const stStxBtcSupply = await stacks.getStStxBtcSupplyAtBlock(
     stacksBlock.results[0].height - 1
   );
@@ -87,10 +87,16 @@ export async function processCyclePrices(
     currentCycle
   );
 
-  if (currentCycle > cycleToProcess) {
-    await savePrices(cycleToProcess);
+  try {
+    if (currentCycle > cycleToProcess) {
+      await savePrices(cycleToProcess);
+    }
+    if (currentCycle >= cycleToProcess) {
+      await saveSupply(cycleToProcess);
+    }
+  } catch (error) {
+    console.error("Error processing cycle prices", error);
   }
-  if (currentCycle >= cycleToProcess) {
-    await saveSupply(cycleToProcess);
-  }
+
+  console.log("Processed cycle prices", cycleToProcess);
 }

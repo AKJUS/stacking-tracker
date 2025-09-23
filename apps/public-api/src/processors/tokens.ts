@@ -59,14 +59,25 @@ export function getTokensInfoForCycle(
     const apr = (previousRewardsValue / previousStackedValue) * 26;
     const apy = (Math.pow(1 + apr / 26, 26) - 1) * 100.0;
 
-    tokens.push({
-      address: tokenInfo.address,
-      name: tokenInfo.name,
-      stacked_amount: tokenStackedAmount * share,
-      rewards_amount: tokenRewardAmount * share,
-      apr: apr * 100.0,
-      apy: apy,
-    });
+    if (tokenStackedAmount === 0) {
+      tokens.push({
+        address: tokenInfo.address,
+        name: tokenInfo.name,
+        stacked_amount: 0.0,
+        rewards_amount: 0.0,
+        apr: 0.0,
+        apy: 0.0,
+      });
+    } else {
+      tokens.push({
+        address: tokenInfo.address,
+        name: tokenInfo.name,
+        stacked_amount: tokenStackedAmount * share,
+        rewards_amount: tokenRewardAmount * share,
+        apr: apr * 100.0,
+        apy: apy,
+      });
+    }
   }
 
   let stackedAmount = 0.0;
@@ -98,7 +109,9 @@ export function getTokenEntities(
       const filteredInfo = info.tokens.filter(
         (token: any) => token.name === tokenInfo.name
       )[0];
-      cycleInfoAddress.push(filteredInfo);
+      if (filteredInfo.stacked_amount > 0) {
+        cycleInfoAddress.push(filteredInfo);
+      }
     });
 
     var aprSum = 0.0;

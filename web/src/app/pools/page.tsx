@@ -158,7 +158,9 @@ export default async function Home() {
                         className="flex font-semibold items-center"
                       >
                         <img className="w-5 h-5 mr-2" src={entity.logo} />
-                        {entity.name}
+                        <a href={entity.website} target="_blank">
+                          {entity.name}
+                        </a>
                       </div>
                     </dd>
                   </div>
@@ -228,7 +230,10 @@ export default async function Home() {
             ]}
             rows={poolsInfo.entities.map((entity: any) => [
               <div key={entity.name} className="flex font-semibold">
-                <img className="w-5 mr-2" src={entity.logo} /> {entity.name}
+                <img className="w-5 mr-2" src={entity.logo} />
+                <a href={entity.website} target="_blank">
+                  {entity.name}
+                </a>
               </div>,
               <div key={entity.name + "-stacked"}>
                 <div className="flex items-center">

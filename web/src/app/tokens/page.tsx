@@ -169,7 +169,9 @@ export default async function Home() {
                           className="shrink-0 h-5 w-5 mr-2"
                           src={entity.logo}
                         />{" "}
-                        {entity.entity}
+                        <a href={entity.website} target="_blank">
+                          {entity.entity}
+                        </a>
                       </div>
                     </dd>
                   </div>
@@ -260,7 +262,10 @@ export default async function Home() {
                 {entity.name}
               </div>,
               <div key={entity.entity} className="flex">
-                <img className="w-5 mr-2" src={entity.logo} /> {entity.entity}
+                <img className="w-5 mr-2" src={entity.logo} />{" "}
+                <a href={entity.website} target="_blank">
+                  {entity.entity}
+                </a>
               </div>,
               <div key={entity.name + "-token"}>
                 <div className="flex items-center gap-1">

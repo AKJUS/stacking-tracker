@@ -117,6 +117,7 @@ export function getSignerEntities(
         name: signerKeyToPool[signer.signerKey as string].name,
         slug: signerKeyToPool[signer.signerKey as string].slug,
         logo: signerKeyToPool[signer.signerKey as string].logo,
+        website: signerKeyToPool[signer.signerKey as string].website,
         signer_key: signer.signerKey,
         stackers_count: signer.stackersCount,
         stacked_amount: signer.stackedAmount,

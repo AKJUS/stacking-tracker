@@ -42,9 +42,13 @@ export function PositionsRow({ firstChild, position }: Props) {
                     <div className="flex flex-col py-4">
                       {position.type === "LST" &&
                       position.name === "StackingDAO" ? (
-                        <div className="font-semibold">
+                        <a
+                          className="font-semibold"
+                          href={position.link}
+                          target="_blank"
+                        >
                           {position.name} {position.symbol}
-                        </div>
+                        </a>
                       ) : (
                         <div className="font-semibold">{position.name}</div>
                       )}

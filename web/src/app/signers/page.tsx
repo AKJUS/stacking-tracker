@@ -158,9 +158,13 @@ export default async function Home() {
                     <dd>
                       <div className="flex items-center">
                         <img className="w-5 mr-2" src={signer.logo} />
-                        <div className="font-semibold">
+                        <a
+                          className="font-semibold"
+                          href={signer.website}
+                          target="_blank"
+                        >
                           {shortAddress(signer.name)}
-                        </div>
+                        </a>
                       </div>
                     </dd>
                   </div>
@@ -216,7 +220,13 @@ export default async function Home() {
             rows={signersInfo.entities.map((signer: any) => [
               <div key={signer.name} className="flex items-center">
                 <img className="w-5 mr-2" src={signer.logo} />
-                <div className="font-semibold">{shortAddress(signer.name)}</div>
+                <a
+                  className="font-semibold"
+                  href={signer.website}
+                  target="_blank"
+                >
+                  {shortAddress(signer.name)}
+                </a>
               </div>,
               <div key={signer.name + "-stacked"}>
                 <div className="flex items-center">
